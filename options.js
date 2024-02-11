@@ -1,14 +1,24 @@
 const buttonEl = document.querySelector("button");
-const inputEl = document.querySelector('input');
-chrome.storage.sync.get(['time'], function({time}) {
+const secondsEl = document.querySelector('#seconds');
+const messageEl = document.querySelector("#message");
+chrome.storage.sync.get(['time', 'message'], function({time, message}) {
     if (time !== undefined) {
-        inputEl.value = time;
+        secondsEl.value = time;
+    }
+    if (message !== undefined) {
+        messageEl.value = message;
     }
 });
 buttonEl.addEventListener('click', () => {
-    const seconds = +inputEl.value;
-    chrome.storage.sync.set({ time: seconds }, function() {
-        alert('Pause Time Set');
-     });
-
+    const seconds = +secondsEl.value;
+    chrome.storage.sync.set({ time: seconds });
+    chrome.storage.sync.set({ message: messageEl.value });
+    Toastify({
+        text: "Your setting have been saved!",
+        position: 'right',
+        duration: 2000,
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+      }).showToast();
 })

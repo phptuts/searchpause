@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Search Pause",
+  "name": "Pause Search",
   "version": "1.0.0",
   "description": "Allows for custom pauses between searches.",
   "icons": {

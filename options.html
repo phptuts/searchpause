@@ -6,6 +6,7 @@
     <title>Pause Search Options!</title>
 <!-- Un-Minified version -->
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <style>
     input {
         width: 200px;
@@ -22,17 +23,22 @@
       <main>
         <form>
             <p>
-                <label>Seconds to Pause</label>
-                <input type="number" min="0" max="100" value="5" step="1">
-                <button>Set Time</button>
+                <label>Message</label>
+                <input type="text" id="message" value="Is this search skillful?" >
             </p>
-            
+            <p>
+                <label>Seconds to Pause</label>
+                <input id="seconds" type="number" min="0" max="100" value="3" step="1">
+            </p>
+            <button type="button">Submit Setting</button>
+
         </form>
       </main>
     
       <footer>
         <p>By Noah Glaser.</p>
       </footer>
+      <script src="toastify.min.js"></script>
     <script src="options.js">
         
     </script>

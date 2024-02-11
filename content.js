@@ -31,7 +31,7 @@
     h1.style.color = 'black';
     h1.style.marginTop = '30px';
     h1.style.padding = '20px';
-    h1.textContent = `Is this searching for "${searchTerm}" skillful?`;
+    
     modalDiv.appendChild(h1);
 
     const cancelButton = document.createElement('button');
@@ -72,8 +72,9 @@
         blockerDiv.remove();
     })
 
-    chrome.storage.sync.get(['time'], function({time}) {
-        let countDown = time === undefined ? 5 : +time;
+    chrome.storage.sync.get(['time', 'message'], function({time, message}) {
+        let countDown = time === undefined ? 3 : +time;
+        h1.textContent = message === undefined ? `Is this search skillful?` : message;
         h2.textContent = `Continue in ${countDown} seconds.`;
         if (time <= 0) {
             modalDiv.appendChild(continueButton);
